@@ -17,10 +17,6 @@ fun printLog(tag: String, message: String) {
 class DebuggingTileService : TileService() {
 
     private val tag = DebuggingTileService::class.java.simpleName
-
-    private val stateOn = 1
-    private val stateOff = 0
-
     private val enabled = 1
     private val disabled = 0
 
@@ -52,7 +48,7 @@ class DebuggingTileService : TileService() {
         val isDeveloperOptionsEnabled = Settings.Global.getInt(
             applicationContext.contentResolver,
             Settings.Global.DEVELOPMENT_SETTINGS_ENABLED,
-            0
+            disabled
         ) == enabled
         if (isDeveloperOptionsEnabled) {
             navigateUsbDebugging()
